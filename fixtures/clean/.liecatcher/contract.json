@@ -1,0 +1,6 @@
+{
+  "declared_paths": ["src/", "tests/"],
+  "declared_commands": ["pytest"],
+  "declared_suites": ["pytest"],
+  "native_deps": []
+}

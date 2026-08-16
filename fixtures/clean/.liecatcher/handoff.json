@@ -1,0 +1,6 @@
+{
+  "next_goal": "Ship the next feature",
+  "artifacts": ["RECEIPT.json", "junit.xml"],
+  "open_questions": [],
+  "receipt_ref": "RECEIPT.json"
+}

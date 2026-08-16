@@ -1,0 +1,57 @@
+[project]
+name = "liecatchers"
+version = "0.1.0"
+description = "Your agent said Done. Prove it — ten sensors, one RECEIPT.json, zero API keys."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Kazim Merchant" }]
+keywords = [
+  "agents",
+  "cursor",
+  "claude-code",
+  "receipt",
+  "verification",
+  "liecatchers",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+liecatcher = "liecatchers.cli:main"
+liecatchers = "liecatchers.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/kazimrmerchant/liecatchers"
+Repository = "https://github.com/kazimrmerchant/liecatchers"
+Issues = "https://github.com/kazimrmerchant/liecatchers/issues"
+Documentation = "https://github.com/kazimrmerchant/liecatchers#readme"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/liecatchers"]
+
+[tool.hatch.build.targets.wheel.sources]
+"src/liecatchers" = "liecatchers"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
