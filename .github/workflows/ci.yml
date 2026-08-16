@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - name: Sync
+        run: uv sync --extra dev
+      - name: Pytest
+        run: uv run pytest -q
+      - name: Fail demo must exit 1
+        shell: pwsh
+        run: |
+          uv run liecatcher run --fail-demo --no-write
+          if ($LASTEXITCODE -ne 1) { throw "expected exit 1, got $LASTEXITCODE" }
+      - name: Clean fixture must exit 0
+        shell: pwsh
+        run: |
+          uv run liecatcher run --workdir fixtures/clean --no-write
+          if ($LASTEXITCODE -ne 0) { throw "expected exit 0, got $LASTEXITCODE" }
