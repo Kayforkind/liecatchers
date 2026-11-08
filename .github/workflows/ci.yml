@@ -23,8 +23,10 @@ jobs:
           $PSNativeCommandUseErrorActionPreference = $false
           uv run liecatcher run --fail-demo --no-write
           if ($LASTEXITCODE -ne 1) { throw "expected exit 1, got $LASTEXITCODE" }
+          exit 0
       - name: Clean fixture must exit 0
         shell: pwsh
         run: |
           uv run liecatcher run --workdir fixtures/clean --no-write
           if ($LASTEXITCODE -ne 0) { throw "expected exit 0, got $LASTEXITCODE" }
+          exit 0
