@@ -20,6 +20,7 @@ jobs:
       - name: Fail demo must exit 1
         shell: pwsh
         run: |
+          $PSNativeCommandUseErrorActionPreference = $false
           uv run liecatcher run --fail-demo --no-write
           if ($LASTEXITCODE -ne 1) { throw "expected exit 1, got $LASTEXITCODE" }
       - name: Clean fixture must exit 0
